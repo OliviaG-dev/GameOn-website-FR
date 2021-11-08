@@ -8,7 +8,7 @@ function editNav() {
 }
 
 // DOM Elements
-const modalbg = document.querySelector(".bground");
+const modal = document.querySelector(".modal");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const close = document.querySelector(".close");
@@ -16,9 +16,13 @@ const close = document.querySelector(".close");
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
-// launch modal form
+// Open modal form
 function launchModal() {
-  modalbg.style.display = "block";
+  modal.className = "modal select-show";
 }
+//close modale
+close.addEventListener("click", () => {
+  modal.className = "select-hide";
+});
 
 
