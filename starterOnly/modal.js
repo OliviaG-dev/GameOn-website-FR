@@ -8,29 +8,45 @@ function editNav() {
 }
 
 // DOM Elements
-const modal = document.querySelector(".modal");
+const modalSignup = document.querySelector(".modal");
 const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
+const btnOk = document.querySelector(".btn-ok");
+const btnSignup = document.querySelector(".btn-submit");
 const close = document.querySelector(".close");
 const inputs = document.querySelectorAll(
   'input[type="text"], input[type="email"], input[type="date"], input[type="number"], input[type="checkbox"], input[type="radio"]'
 );
 const form = document.querySelector("form");
+const modalOk = document.querySelector(".modal-ok");
+const SubmitOk = document.querySelector(".btn-ok");
 
-//variable "envoie"
+//variable "submit"
 let first, last, email, birthday, quantity, ville, checkbox1, checkbox2;
 
-// launch modal event
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+// launch/close modal event
+modalBtn.forEach((btn) => btn.addEventListener("click", launchModalSignup));
+close.addEventListener("click", closeModalSignup);
+btnOk.addEventListener("click", closeModalOk);
 
-// Open modal form
-function launchModal() {
-  modal.className = "modal select-show";
+
+// Open modal Signup
+function launchModalSignup() {
+  modalSignup.className = "modal select-show";
 }
-//close modale
-close.addEventListener("click", () => {
-  modal.className = "select-hide";
-});
+//close modal Signup
+function closeModalSignup() {
+  modalSignup.className = "select-hide";
+}
+
+//Open modal ok
+function lauchModalOk(){
+  modalOk.className = "modal select-show";
+}
+
+//close modal ok
+function closeModalOk() {
+  modalOk.className = "select-hide";
+}
 
 const errorDisplay = (tag, message, valid) => {
   const container = document.querySelector("." + tag + "-data");
@@ -174,7 +190,6 @@ inputs.forEach((input) => {
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  
   if (first && last && email && birthday && ville && checkbox1) {
     const data = {
       first,
@@ -189,14 +204,18 @@ form.addEventListener("submit", (e) => {
     console.log(data);
 
     inputs.forEach((input) => (input.value = ""));
-    
+
     first = null;
     last = null;
     email = null;
     birthday = null;
     quantity = null;
-    
+
+    closeModalSignup();
+    lauchModalOk();
+
   } else {
-    console.log("Le formulaire est pas rempli!");
+    e.preventDefault();
+    alert("Le formulaire n'est pas bien rempli!");
   }
 });

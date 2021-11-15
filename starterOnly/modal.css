@@ -184,6 +184,18 @@ main {
   background-color: rgba(26, 39, 156, 0.4);
 }
 
+.modal-ok {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(26, 39, 156, 0.4);
+}
+
 .modal-container {
   margin: 5% auto;
   width: 100%;
@@ -352,6 +364,7 @@ input {
 }
 
 .btn-submit,
+.btn-ok,
 .btn-signup {
   background: #fe142f;
   display: block;
