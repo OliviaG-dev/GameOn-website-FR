@@ -89,6 +89,10 @@ img {
     position: relative;
   }
 
+  .main-navbar{
+    margin-top: 15px;
+  }
+
   .topnav.responsive .icon {
     position: absolute;
     right: 0;
@@ -564,11 +568,13 @@ footer {
   .hero-headline {
     font-size: 4.5rem;
     white-space: normal;
+    font-size: 4.3rem;
   }
 
   .hero-text {
     width: unset;
     font-size: 1.5rem;
+    max-width: 18rem;
   }
 
   .hero-img img {
@@ -586,7 +592,18 @@ footer {
     margin-top: 50px;
     text-align: center;
   }
+
+  .modal-container {
+    margin: 0;
+  }
+  
+  .btn-ok {
+    margin-top: 31rem;
+  }
 }
+
+
+
 
 @keyframes modalopen {
   from {
