@@ -20,34 +20,54 @@ const form = document.querySelector("form");
 const modalOk = document.querySelector(".modal-ok");
 const SubmitOk = document.querySelector(".btn-ok");
 
-//variable "submit"
+/**
+ * Variable submit.
+ */
 let first, last, email, birthday, quantity, ville, checkbox1, checkbox2;
 
-// launch/close modal event
+/**
+ * Ouvre et ferme la modale.
+ */
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModalSignup));
 close.addEventListener("click", closeModalSignup);
 btnOk.addEventListener("click", closeModalOk);
 
 
-// Open modal Signup
+/**
+ * Ouvre la modale "Signup".
+ */
 function launchModalSignup() {
+  conditionChecker();
   modalSignup.className = "modal select-show";
 }
-//close modal Signup
+
+/**
+ * Ferme la modale "Signup".
+ */
 function closeModalSignup() {
   modalSignup.className = "select-hide";
 }
 
-//Open modal ok
-function lauchModalOk(){
+/**
+ * Ouvre la modale "ok".
+ */
+function launchModalOk() {
   modalOk.className = "modal select-show";
 }
 
-//close modal ok
+/**
+ * Ferme la modal "ok".
+ */
 function closeModalOk() {
   modalOk.className = "select-hide";
 }
 
+/**
+ * Cette fonction sert a pointer la div concerner et a renvoyer un message d'erreur.
+ * @param {*} tag class de la div qui englobe l'input concerné.
+ * @param {*} message le message d'erreur a envoyer.
+ * @param {*} valid est-ce valide? 
+ */
 const errorDisplay = (tag, message, valid) => {
   const container = document.querySelector("." + tag + "-data");
   const span = document.querySelector("." + tag + "-data > span");
@@ -61,11 +81,15 @@ const errorDisplay = (tag, message, valid) => {
   }
 };
 
+/**
+ * Cette fonction vérifie si le prénom est valide.
+ * @param {*} value valeur du champ prénom
+ */
 const firstNameChecker = (value) => {
   if (value.length > 0 && (value.length < 3 || value.length > 20)) {
     errorDisplay("first", "Le prénom doit faire entre 3 et 20 caractères");
     first = null;
-  } else if (!value.match(/^[a-zA-Z0-9_.-]*$/)) {
+  } else if (!value.match(/^[a-zA-Z0-9_.'-]*$/)) {
     errorDisplay(
       "first",
       "Le prénom ne doit pas contenir de caractère spéciaux"
@@ -77,11 +101,15 @@ const firstNameChecker = (value) => {
   }
 };
 
+/**
+ * Cette fonction vérifie si le nom est valide.
+ * @param {*} value valeur du champ nom
+ */
 const lastNameChecker = (value) => {
   if (value.length > 0 && (value.length < 3 || value.length > 20)) {
     errorDisplay("last", "Le nom doit faire entre 3 et 20 caractères");
     last = null;
-  } else if (!value.match(/^[a-zA-Z0-9_.-]*$/)) {
+  } else if (!value.match(/^[a-zA-Z0-9_.'-]*$/)) {
     errorDisplay("last", "Le nom ne doit pas contenir de caractère spéciaux");
     last = null;
   } else {
@@ -90,6 +118,10 @@ const lastNameChecker = (value) => {
   }
 };
 
+/**
+ * Cette fonction vérifie si l'email est valide.
+ * @param {*} value valeur du champ e-mail
+ */
 const emailChecker = (value) => {
   if (!value.match(/^[\w_-]+@[\w-]+\.[a-z]{2,4}$/i)) {
     errorDisplay("email", "Le mail n'est pas valide");
@@ -100,6 +132,10 @@ const emailChecker = (value) => {
   }
 };
 
+/**
+ * Cette fonction vérifie si la date d'anniverssaire est valide.
+ * @param {*} value valeur du champ birthday 
+ */
 const birthdayChecker = (value) => {
   if (value == "") {
     errorDisplay("birthday", "N'oubliez pas la date !");
@@ -110,6 +146,10 @@ const birthdayChecker = (value) => {
   }
 };
 
+/**
+ * Cette fonction vérifie si le nombre de participation est valide.
+ * @param {*} value valeur du champ de nombre de participation
+ */
 const quantityChecker = (value) => {
   if (value == "" || isNaN(value) || value < 0 || value > 99) {
     errorDisplay("quantity", "Indiquez le nombre de participation !");
@@ -120,6 +160,10 @@ const quantityChecker = (value) => {
   }
 };
 
+/**
+ * Cette fonction vérifie si une ville est cochée.
+ * @param {*} checked cochée ou pas?
+ */
 const villeChecker = (checked) => {
   if (checked == "") {
     errorDisplay("ville", "Indiquez une ville !");
@@ -130,19 +174,27 @@ const villeChecker = (checked) => {
   }
 };
 
+/**
+ * Cette fonction vérifie si les conditions d'utilisation sont cochée.
+ * @param {*} checked cochée ou pas?
+ */
 const conditionChecker = (checked) => {
-  if (checked === false) {
+  if (!checked) {
     errorDisplay(
       "condition",
       "Veuillez accepter les conditions d'utilisation !"
     );
-    checkbox1 = null;
+    checkbox1 = false;
   } else {
     errorDisplay("condition", "", true);
     checkbox1 = true;
   }
 };
 
+/**
+ * Cette fonction vérifie si l'utilisateur souhaite être prévenu des prochains événements.
+ * @param {*} checked cochée ou pas?
+ */
 const warnedChecker = (checked) => {
   if (checked === true) {
     checkbox2 = true;
@@ -151,6 +203,10 @@ const warnedChecker = (checked) => {
   }
 };
 
+/**
+ * ForEach est une méthode qui appel une fonction anonyme (callback) laquelle a pour paramètre (input).
+ * forEach boucles sur (inputs (déclaré lignes 16)). 
+ */
 inputs.forEach((input) => {
   input.addEventListener("input", (e) => {
     switch (e.target.id) {
@@ -188,6 +244,9 @@ inputs.forEach((input) => {
   });
 });
 
+/**
+ * 
+ */
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   if (first && last && email && birthday && ville && checkbox1) {
@@ -212,10 +271,40 @@ form.addEventListener("submit", (e) => {
     quantity = null;
 
     closeModalSignup();
-    lauchModalOk();
-
+    launchModalOk();
   } else {
     e.preventDefault();
-    alert("Le formulaire n'est pas bien rempli!");
+    
+
+    /**
+     * 
+     */
+    if (first === undefined) {
+      firstNameChecker("0");
+    }
+
+    if (last === undefined) {
+      lastNameChecker("0");
+    }
+
+    if (email === undefined) {
+      emailChecker("0");
+    }  
+
+    if (birthday === undefined) {
+      birthdayChecker(false);
+    }
+
+    if (quantity === undefined) {
+      quantityChecker(false);
+    }
+
+    if (ville === undefined) {
+      villeChecker(false);
+    }
+
+    if (condition === undefined) {
+      conditionChecker(false);
+    }
   }
 });
