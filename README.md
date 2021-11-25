@@ -1,5 +1,13 @@
-# Projet GameOn
-1. Forkez ce repo ;
-2. Il est conseillé d'utiliser VisualStudio Code et vous pouvez utiliser Docker, mais ce n'est pas obligatoire ;
-3. Il n'y a aucune dépendance ;
-4. Vous ne devez utiliser que du CSS personnalisé et du JavaScript pur, sans jQuery, Bootstrap ou autre librairie.
+# *---Projet GameOn----*
+
+P4-OpenClassrooms
+
+1. Forkez le repos.
+2. Utiliser que du CSS personalisé et du javascript pur. 
+3. faire les issues :
+
+- Fermer la modale : ok.
+- Implémenter entrée du formulaire : ok.
+- Ajouter validation ou message d'erreur : ok.
+- Ajouter confirmation quant envoie réussi : ok.
+- Tests manuels : ok.

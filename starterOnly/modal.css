@@ -10,7 +10,9 @@
   padding: 0;
 }
 
-/* Landing Page */
+/********************** HEADER **********************************/
+/***************************************************************/
+/***************************************************************/
 
 body {
   margin: 0;
@@ -32,6 +34,7 @@ img {
   padding-right: 1rem;
 }
 
+/********************** Navigation ***************************/
 .topnav {
   overflow: hidden;
   margin: 3.5%;
@@ -73,6 +76,7 @@ img {
   display: none;
 }
 
+/********************** Média navigation ***************************/
 @media screen and (max-width: 768px) {
   .topnav a {
     display: none;
@@ -106,8 +110,6 @@ img {
   }
 }
 
-
-
 @media screen and (max-width: 540px) {
   .topnav a {
     display: none;
@@ -119,6 +121,10 @@ img {
     margin-top: -15px;
   }
 }
+
+/********************** MAIN and MODAL ***************************/
+/***************************************************************/
+/***************************************************************/
 
 main {
   font-size: 130%;
@@ -156,8 +162,6 @@ main {
   font-family: var(--font-slab);
 }
 
-/* Modal form */
-
 .button {
   background: #fe142f;
   margin-top: 0.5em;
@@ -175,6 +179,8 @@ main {
 .smFont {
   font-size: 16px;
 }
+
+/********************** Modal ***************************/
 
 .modal {
   display: none;
@@ -219,6 +225,8 @@ main {
   margin: 15px auto;
 }
 
+/********************** label input error ***************************/
+
 label {
   font-family: var(--font-default);
   font-size: 17px;
@@ -261,6 +269,8 @@ input {
   line-height: 0.3;
   transition: 0.3s;
 }
+
+/********************** Checkbox ***************************/
 
 .checkbox-data {
   margin-top: -15px;
@@ -545,6 +555,10 @@ footer {
   margin: 0 20px;
 }
 
+/********************** Media Main and modal ***************************/
+/***************************************************************/
+/***************************************************************/
+
 @media screen and (max-width: 800px) {
   .hero-section {
     display: block;
@@ -604,6 +618,7 @@ footer {
 
 
 
+/***********Animation open modal********************/
 
 @keyframes modalopen {
   from {

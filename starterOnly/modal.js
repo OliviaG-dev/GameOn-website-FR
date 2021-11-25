@@ -20,44 +20,42 @@ const form = document.querySelector("form");
 const modalOk = document.querySelector(".modal-ok");
 const SubmitOk = document.querySelector(".btn-ok");
 
-/**
- * Variable submit.
- */
+
+//Variable submit.
+
 let first, last, email, birthday, quantity, ville, checkbox1, checkbox2;
 
-/**
- * Ouvre et ferme la modale.
- */
+
+//Ouvre et ferme la modale.
+
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModalSignup));
 close.addEventListener("click", closeModalSignup);
 btnOk.addEventListener("click", closeModalOk);
 
 
-/**
- * Ouvre la modale "Signup".
- */
+
+//Ouvre la modale "Signup".
+
 function launchModalSignup() {
   conditionChecker();
   modalSignup.className = "modal select-show";
 }
 
-/**
- * Ferme la modale "Signup".
- */
+
+//Ferme la modale "Signup".
 function closeModalSignup() {
   modalSignup.className = "select-hide";
 }
 
-/**
- * Ouvre la modale "ok".
- */
+
+//Ouvre la modale "ok".
+
 function launchModalOk() {
   modalOk.className = "modal select-show";
 }
 
-/**
- * Ferme la modal "ok".
- */
+
+//Ferme la modal "ok".
 function closeModalOk() {
   modalOk.className = "select-hide";
 }
@@ -204,7 +202,7 @@ const warnedChecker = (checked) => {
 };
 
 /**
- * ForEach est une méthode qui appel une fonction anonyme (callback) laquelle a pour paramètre (input).
+ * forEach est une méthode qui appel une fonction anonyme (callback) laquelle a pour paramètre (input).
  * forEach boucles sur (inputs (déclaré lignes 16)). 
  */
 inputs.forEach((input) => {
@@ -245,10 +243,12 @@ inputs.forEach((input) => {
 });
 
 /**
- * 
+ * Envoie du formulaire
  */
 form.addEventListener("submit", (e) => {
-  e.preventDefault();
+  e.preventDefault(); //comportement par défaut du formulaire (il change de page) n'est pas exécutée.
+
+  //Si les valeurs sont juste (true) alors : on les mets dans un objet et on log.
   if (first && last && email && birthday && ville && checkbox1) {
     const data = {
       first,
@@ -262,22 +262,20 @@ form.addEventListener("submit", (e) => {
     };
     console.log(data);
 
+    //vider les inputs.
     inputs.forEach((input) => (input.value = ""));
+    inputs.forEach((input) => (input.checked = ""));
+    
 
-    first = null;
-    last = null;
-    email = null;
-    birthday = null;
-    quantity = null;
+    closeModalSignup(); //fermeture de la modale "Signup".
+    launchModalOk();//ouverture de la modale "Ok".
 
-    closeModalSignup();
-    launchModalOk();
-  } else {
+  } else { //si les valeurs sont fausses alors :
     e.preventDefault();
     
 
     /**
-     * 
+     * Condition : si "first" est undefined alors on met un message d'erreur.
      */
     if (first === undefined) {
       firstNameChecker("0");
