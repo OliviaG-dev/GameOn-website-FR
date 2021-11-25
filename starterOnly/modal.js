@@ -22,12 +22,10 @@ const SubmitOk = document.querySelector(".btn-ok");
 
 
 //Variable submit.
-
 let first, last, email, birthday, quantity, ville, checkbox1, checkbox2;
 
 
 //Ouvre et ferme la modale.
-
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModalSignup));
 close.addEventListener("click", closeModalSignup);
 btnOk.addEventListener("click", closeModalOk);
@@ -35,7 +33,6 @@ btnOk.addEventListener("click", closeModalOk);
 
 
 //Ouvre la modale "Signup".
-
 function launchModalSignup() {
   conditionChecker();
   modalSignup.className = "modal select-show";
@@ -266,6 +263,12 @@ form.addEventListener("submit", (e) => {
     inputs.forEach((input) => (input.value = ""));
     inputs.forEach((input) => (input.checked = ""));
     
+    //remettre les valeurs à null
+    first = null;
+    last = null;
+    email = null;
+    birthday = null;
+    quantity = null;
 
     closeModalSignup(); //fermeture de la modale "Signup".
     launchModalOk();//ouverture de la modale "Ok".
@@ -275,7 +278,7 @@ form.addEventListener("submit", (e) => {
     
 
     /**
-     * Condition : si "first" est undefined alors on met un message d'erreur.
+     * si "first" est undefined alors on met le message d'erreur.
      */
     if (first === undefined) {
       firstNameChecker("0");
@@ -301,7 +304,7 @@ form.addEventListener("submit", (e) => {
       villeChecker(false);
     }
 
-    if (condition === undefined) {
+    if (checkbox1 === undefined) {
       conditionChecker(false);
     }
   }
