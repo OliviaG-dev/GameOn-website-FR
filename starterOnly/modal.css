@@ -225,6 +225,22 @@ main {
   margin: 15px auto;
 }
 
+.ok {
+  padding: 15px 15%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+} 
+
+.ok-text {
+  font-size: 35px;
+  font-weight: 50;
+  text-align: center;
+  line-height: 1.5;
+  margin: auto;
+}
+
 /********************** label input error ***************************/
 
 label {
@@ -388,6 +404,10 @@ input {
   color: #fff;
   cursor: pointer;
   border: 0;
+}
+
+.btn-ok {
+  margin-bottom:20px;
 }
 
 /* custom select styles */
@@ -607,11 +627,22 @@ footer {
   }
 
   .modal-container {
-    margin: 0;
+    margin-top: 70px;
+    margin-bottom: 0;
   }
   
-  .btn-ok {
-    margin-top: 31rem;
+  .modal {
+    background: none;
+  }
+
+  img {
+    margin: 15px;
+    width: 60%;
+    height: auto;
+  }
+
+  .fa-navicon:before, .fa-reorder:before, .fa-bars:before {
+    color:#fe142f;
   }
 }
 

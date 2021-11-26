@@ -7,7 +7,7 @@ function editNav() {
   }
 }
 
-// DOM Elements
+
 const modalSignup = document.querySelector(".modal");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const btnOk = document.querySelector(".btn-ok");
@@ -278,7 +278,7 @@ form.addEventListener("submit", (e) => {
     
 
     /**
-     * si "first" est undefined alors on met le message d'erreur.
+     * si la variable  ,"first" est undefined alors on appel la fonction qui met le message d'erreur.
      */
     if (first === undefined) {
       firstNameChecker("0");
